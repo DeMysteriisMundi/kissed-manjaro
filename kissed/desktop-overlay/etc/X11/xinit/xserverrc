@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+
+main() {
+    exec /usr/bin/X -nolisten tcp "$@"
+}
+
+
+main "$@"

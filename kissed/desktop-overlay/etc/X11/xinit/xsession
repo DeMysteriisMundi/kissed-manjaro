@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+
+main() {
+    XDG_SESSION_TYPE="x11"
+    PROFILE="kissed-default"
+}
+
+
+main "$@"
