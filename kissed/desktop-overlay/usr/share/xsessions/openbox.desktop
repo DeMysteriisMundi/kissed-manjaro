@@ -1,8 +1,8 @@
 [Desktop Entry]
 Name=KISSed
 Comment=KISSed X11 Environment
-Exec=/usr/bin/lxsession -s kissed-default
-TryExec=/usr/bin/lxsession -s kissed-default
+Exec=/usr/bin/startx
+TryExec=/usr/bin/startx
 Icon=openbox
 Type=Application
 Name[en_US]=kissed
