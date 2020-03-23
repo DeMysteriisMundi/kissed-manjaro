@@ -10,6 +10,14 @@ log() {
 }
 
 
+terminate() {
+    # $1 - error code
+
+    log "failed!"
+    exit "$1"
+}
+
+
 clone_repo() {
     # $1 - cloned repository
     # $2 - path to clone it
@@ -21,13 +29,18 @@ clone_repo() {
 make_symlink() {
     # $1 - path to file object
     # $2 - path to place the symlink
- 
-    ln -sr "$1" "$2"
+
+    # 'ln' must not create the symlink within
+    # the same name file.
+    [[ ! -d "$2" ]] && ln -sr "$1" "$2" || {
+        printf "'%s' already exists\n" "$2" >&2
+        return 1
+    }
 }
 
 
 get_opt() {
-    VERBOSE=0
+    VERBOSE=1
     QUITE=0
 
     (:;:)
@@ -40,7 +53,7 @@ main() {
     local PROF_ROOT="$HOME/iso-profiles"
     local KISSED_PROF="$PROF_ROOT/community/kissed"
 
-    local KISSED_ROOT="kissed"
+    local KISSED_ROOT="./kissed"
 
 
     get_opt "$@"
@@ -48,11 +61,11 @@ main() {
 
     log "cloning repository..." && {
         clone_repo "$DIST_REPO" "$PROF_ROOT"
-    } || log "failed!"
+    } || terminate "$?"
 
     log "making symlink..." && {
         make_symlink "$KISSED_ROOT" "$KISSED_PROF"
-    } || log "failed!"
+    } || terminate "$?"
 }
 
 
