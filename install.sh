@@ -40,10 +40,17 @@ make_symlink() {
 
 
 get_opt() {
-    VERBOSE=1
-    QUITE=0
+    # $1 - just an option
 
-    (:;:)
+    while [[ -n "$1" ]]
+    do
+        case "$1" in
+          "-q") exec 1>/dev/null && exec 2>/dev/null;;
+          "-v") exec 2>/dev/null ;;
+        esac
+
+        shift
+    done
 }
 
 
@@ -57,7 +64,6 @@ main() {
 
 
     get_opt "$@"
-
 
     log "cloning repository..." && {
         clone_repo "$DIST_REPO" "$PROF_ROOT"
