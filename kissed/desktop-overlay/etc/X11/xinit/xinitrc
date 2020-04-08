@@ -1,12 +1,9 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 
 main() {
-   XDG_SESSION_TYPE="x11"
-   PROFILE="kissed-default"
-
-   # Start the session
-   exec /usr/bin/lxsession -s $PROFILE
+    # Start the session
+    exec /usr/bin/openbox-session
 }
 
 

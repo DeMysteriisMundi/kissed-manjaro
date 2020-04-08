@@ -1,8 +1,8 @@
 [Desktop Entry]
-Name=KISSed
-Comment=KISSed X11 Environment
-Exec=/usr/bin/lxsession -s kissed-default
-TryExec=/usr/bin/lxsession -s kissed-default
+Name=KISSed-default
+Comment=Default KISSed Environment
+Exec=/usr/bin/openbox-session
+TryExec=/usr/bin/openbox-session
 Icon=openbox
 Type=Application
-Name[en_US]=kissed
+Name[en_US]=kissed-default
