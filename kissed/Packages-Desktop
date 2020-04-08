@@ -256,7 +256,9 @@ alsa-plugins
 python2-xdg
 python-xdg
 gtk3
+gtk2
 perl-gtk3
+gtk2-perl
 
 
 #-------------------------------------
