@@ -1,92 +1,135 @@
-##### KISSED PROFILE #####
+#---- Created by DeMysteriisMundi ----
+# More: http://openbox.org/wiki/Main_Page
 
 
-### Desktop Manager ###
+#-------------------------------------
+# KISSED-MANJARO PACKAGES
+#-------------------------------------
+
+
+#-------------------------------------
+# Display Manager
+
 lightdm
 lightdm-gtk-greeter
 
-
-### Session Manager ###
-lxsession-gtk3
+>extra lightdm-settings
 
 
-### Desktop Environment ###
+#-------------------------------------
+# Windows Manager
+
 openbox
+
+#oblogout
+obmenu-generator
+>extra obkey-gtk3
+>extra obconf
+
+
+#-------------------------------------
+# Screensaver
+
+light-locker
+
+#>extra light-locker-settings
+
+
+#-------------------------------------
+# Terminal Emulator
+
+lxterminal
+
+zsh
+#oh-my-zsh-git
+
+
+#-------------------------------------
+# Docks & Panels
 
 tint2
 plank
 
-lxterminal
+
+#-------------------------------------
+# Systray & Applets
+
+network-manager-applet
+volumeicon
+gxkb
+
+
+#-------------------------------------
+# File Manager
 
 pcmanfm
+
+gvfs
+>extra gvfs-afc
+>extra gvfs-gphoto2
+>extra gvfs-mtp
+>extra gvfs-nfs
+>extra gvfs-smb
+
+>extra ffmpegthumbnailer
+
+
+#-------------------------------------
+# Text Editor
 
 vim
 l3afpad
 
 
-### Style ###
-ttf-font-awesome
-ttf-roboto
-cantarell-fonts
-papirus-icon-theme
-matcha-gtk-theme
+#-------------------------------------
+# Multimedia
 
-
-### Configuration ###
-network-manager-applet
-volumeicon
-
-lightdm-settings
-
-lxappearance-gtk3
-lxrandr-gtk3
-
-obmenu-generator
-obkey-gtk3
-obconf
-
-
-### CLI Basic ###
-arp-scan
-bind-tools
-net-tools
-openssh
-traceroute
-whois
-
-htop
-neofetch
-upower
-
->extracatimg
->extra dmidecode
->extrahddtemp
->extra jp2a
->extra pastebinit
->extra ps_mem
->extra tree
-
-
-### Multimedia ###
 >extra vlc
 >extra gpicview-gtk3
 
 
-### Internet ###
+#-------------------------------------
+# Internet
+
 firefox
 
 >extra telegram-desktop
 
 
-### Files ###
+#-------------------------------------
+# CLI Utilitites
+
+arp-scan
+bind-tools
+net-tools
+traceroute
+whois
+
+htop
+upower
+>extra ps_mem
+>extra hddtemp
+
+neofetch
+scrot
+fakeroot
+zenity
+>extra tree
+>extra catimg
+>extra dmidecode
+>extra jp2a
+>extra pastebinit
+
+
+#-------------------------------------
+# File Utilities
+
 mlocate
 
 engrampa
 p7zip
 unrar
 unzip
-
->extra ffmpegthumbnailer
 
 >extra unace
 >extra unarchiver
@@ -95,29 +138,75 @@ unzip
 >multilib lib32-mesa-demos
 
 
-### Connect Packages ###
-gvfs
-gvfs-afc
-gvfs-gphoto2
-gvfs-mtp
-gvfs-nfs
-gvfs-smb
-mtpfs
+#-------------------------------------
+# System Utilities
+
+accountsservice
+picom
+dconf
+zensu
+manjaro-hotfixes
+xdg-utils
+squashfs-tools
+
+
+#-------------------------------------
+# Built Utilities
+
+pacaur
+autoconf
+automake
+binutils
+bison
+fakeroot
+flex
+gcc
+libtool
+m4
+make
+patch
+pkg-config
+git
+patchutils
+subversion
+jsoncpp
+>multilib lib32-flex
+
+
+#-------------------------------------
+# Fonts
+
+ttf-dejavu
+ttf-font-awesome
+
+>extra wqy-bitmapfont
+>extra wqy-zenhei
+>extra ttf-arphic-ukai
+>extra ttf-arphic-uming
+>extra ttf-fireflysung
+
+
+#-------------------------------------
+# Themes & Icons
+
+papirus-icon-theme
+matcha-gtk-theme
+
+>extra lxappearance-gtk3
+>extra lxrandr-gtk3
+
+
+#-------------------------------------
+# Devices
+
 udiskie
 udisks2
+>extra mtpfs
 
 
-### Other ###
-scrot
-arandr
-fakeroot
-picom
-jsoncpp
-nitrogen
-zenity
+#-------------------------------------
+# Audio
 
-
-### Audio ###
 alsa-firmware
 alsa-utils
 alsa-plugins
@@ -133,11 +222,9 @@ alsa-plugins
 >extra mpg123
 
 
-### Network ###
-#wicd-patched
+#-------------------------------------
+# Bluetooth
 
-
-### Bluetooth ###
 >extra bluez
 >extra bluez-utils
 >extra blueman
@@ -162,47 +249,21 @@ alsa-plugins
 >extra splix
 
 
-### System Driver/Utilities ###
-accountsservice
-dconf
-zensu
-gnome-keyring
-gtk3
-manjaro-hotfixes
+#-------------------------------------
+# Libs
+
+#gamin
 python2-xdg
 python-xdg
-squashfs-tools
-xdg-user-dirs
-xdg-utils
-
-
-### Build Support ###
-pacaur
-autoconf
-automake
-binutils
-bison
-fakeroot
-flex
-gcc
-libtool
-m4
-make
-patch
-pkg-config
->multilib lib32-flex
-git
-patchutils
-subversion
-
-
-### Libs ###
-#gamin
 gtk3
+gtk2
 perl-gtk3
+gtk2-perl
 
 
-### XORG ###
+#-------------------------------------
+# XORG
+
 xorg-fonts-75dpi
 xorg-fonts-100dpi
 xorg-fonts-type1
@@ -222,3 +283,9 @@ xorg-xprop
 >extra xorg-xbacklight
 >extra xorg-xdpyinfo
 >extra xorg-xwininfo
+
+
+#-------------------------------------
+# SSH
+
+openssh
