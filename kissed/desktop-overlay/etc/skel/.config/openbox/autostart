@@ -1,0 +1,55 @@
+#---- Created by DeMysteriisMundi ----
+# More: http://openbox.org/wiki/Main_Page
+
+
+#-------------------------------------
+# Compositing
+
+[[ -z $(pgrep "compton") ]] && {
+    compton -C &
+}
+
+
+#-------------------------------------
+# Desktop Manager
+
+[[ -z $(pgrep "pcmanfm") ]] && {
+    pcmanfm --desktop &
+}
+
+
+#-------------------------------------
+# Dock
+
+[[ -z $(pgrep "plank") ]] && {
+    plank &
+}
+
+
+#-------------------------------------
+# Panels
+
+[[ -z $(pgrep "tint2") ]] && {
+    tint2 -c ~/.config/tint2/tint2rc_top &
+    tint2 -c ~/.config/tint2/tint2rc_clock &
+}
+
+
+#-------------------------------------
+# Applets
+
+[[ -z $(pgrep "nm-applet") ]] && {
+    nm-applet &
+}
+
+[[ -z $(pgrep "volumeicon") ]] && {
+    volumeicon &
+}
+
+[[ -z $(pgrep "gxkb") ]] && {
+    gxkb &
+}
+
+[[ -z $(pgrep "blueman-tray") ]] && {
+    blueman-tray &
+}

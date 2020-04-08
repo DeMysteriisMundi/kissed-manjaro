@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+
+
+main() {
+    setxkbmap -layout us,ru -option "grp:alt_shift_toggle,grp_led:scroll" &
+}
+
+
+main "$@"
