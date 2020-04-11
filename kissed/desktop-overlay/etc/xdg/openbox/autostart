@@ -6,7 +6,7 @@
 # Compositing
 
 [[ -z $(pgrep "compton") ]] && {
-    compton -C &
+    picom &
 }
 
 
@@ -30,7 +30,7 @@
 # Panels
 
 [[ -z $(pgrep "tint2") ]] && {
-    tint2 -c /etc/xdg/tint2/tint2rc_top &
+    tint2 -c /etc/xdg/tint2/tint2rc_systray &
     tint2 -c /etc/xdg/tint2/tint2rc_clock &
 }
 
