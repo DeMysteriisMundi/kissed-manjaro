@@ -5,8 +5,8 @@
 #-------------------------------------
 # Compositing
 
-[[ -z $(pgrep "compton") ]] && {
-    picom &
+[[ -z $(pgrep "picom") ]] && {
+    picom -C &
 }
 
 
