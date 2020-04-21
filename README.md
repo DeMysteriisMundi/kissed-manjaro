@@ -8,7 +8,7 @@
 ```
 
 <p align="center">
-	<a href="ftp://91.206.14.236/iso/"><img src="https://img.shields.io/badge/kissed--manjaro-download-success"></a>
+	<a href="https://shorturl.at/nrBU9"><img src="https://img.shields.io/badge/kissed--manjaro-download-success"></a>
 </p>
 
 ---
