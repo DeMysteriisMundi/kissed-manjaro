@@ -32,10 +32,7 @@ make_symlink() {
 
     # 'ln' must not create the symlink within
     # the same name file.
-    [[ ! -d "$2" ]] && ln -sr "$1" "$2" || {
-        printf "'%s' already exists\n" "$2" >&2
-        return 1
-    }
+    ln -snfr "$1" "$2"
 }
 
 
@@ -60,7 +57,10 @@ main() {
     local PROF_ROOT="$HOME/iso-profiles"
     local KISSED_PROF="$PROF_ROOT/community/kissed"
 
+    local CONF_DIR="$HOME/.config/manjaro-tools"
+
     local KISSED_ROOT="./kissed"
+    local KISSED_CONF="./config/manjaro-tools"
 
 
     get_opt "$@"
@@ -69,8 +69,12 @@ main() {
         clone_repo "$DIST_REPO" "$PROF_ROOT"
     } || terminate "$?"
 
-    log "making symlink..." && {
+    log "making project symlink..." && {
         make_symlink "$KISSED_ROOT" "$KISSED_PROF"
+    } || terminate "$?"
+
+    log "making configuration symlink..." && {
+        make_symlink "$KISSED_CONF" "$CONF_DIR"
     } || terminate "$?"
 }
 
