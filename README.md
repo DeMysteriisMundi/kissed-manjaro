@@ -7,6 +7,9 @@
 ╚═╝  ╚═╝╚══════╝╚═════╝       ╚═╝     ╚═╝ ╚════╝ ╚═╝  ╚═╝ ╚═════╝ 
 ```
 
+<p align="center">
+	<a href="https://shorturl.at/nrBU9"><img src="https://img.shields.io/badge/kissed--manjaro-download-success"></a>
+</p>
 
 ---
 
