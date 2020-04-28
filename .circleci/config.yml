@@ -10,7 +10,6 @@ jobs:
           # Get the manjaro linux profiles
           name: Install
           command: |
-            cd kissed-manjaro
             ./install.sh
       - run:
           # Build the kissed-manjaro iso file
