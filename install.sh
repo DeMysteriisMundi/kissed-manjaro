@@ -74,9 +74,11 @@ main() {
     } || terminate "$?"
 
     log "making configuration symlink..." && {
+	[[ ! -d "$HOME/.config" ]] && mkdir "$HOME/.config"
         make_symlink "$KISSED_CONF" "$CONF_DIR"
     } || terminate "$?"
 }
 
 
 main "$@"
+
