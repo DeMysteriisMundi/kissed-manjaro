@@ -22,6 +22,12 @@ clone_repo() {
     # $1 - cloned repository
     # $2 - path to clone it
 
+    [[ -d "$2" ]] && {
+	log "deleting previously pulled profiles..." && {
+	    rm -rf "$2"
+	}
+    }
+
     git clone "$1" "$2"
 }
 
@@ -42,8 +48,7 @@ get_opt() {
     while [[ -n "$1" ]]
     do
         case "$1" in
-          "-q") exec 1>/dev/null && exec 2>/dev/null;;
-          "-v") exec 2>/dev/null ;;
+	  "-b") BUILD=1 ;;
         esac
 
         shift
@@ -52,31 +57,40 @@ get_opt() {
 
 
 main() {
-    local DIST_REPO="https://gitlab.manjaro.org/profiles-and-settings/iso-profiles.git"
-   
-    local PROF_ROOT="$HOME/iso-profiles"
-    local KISSED_PROF="$PROF_ROOT/community/kissed"
+    local PROF_DIR="$HOME/iso-profiles"
+    local PROF_REPO="https://gitlab.manjaro.org/profiles-and-settings/iso-profiles.git"
+    local PROF_CONF="$HOME/.config/manjaro-tools"
+    local PROF_BUILD="$PROF_DIR/community/$PROJ_PROF"
 
-    local CONF_DIR="$HOME/.config/manjaro-tools"
-
-    local KISSED_ROOT="./kissed"
-    local KISSED_CONF="./config/manjaro-tools"
+    local PROJ_PROF="kissed"
+    local PROJ_CONF="./config/manjaro-tools"
+    local PROJ_BUILD="./$PROJ_PROF"
 
 
     get_opt "$@"
 
-    log "cloning repository..." && {
-        clone_repo "$DIST_REPO" "$PROF_ROOT"
-    } || terminate "$?"
 
-    log "making project symlink..." && {
-        make_symlink "$KISSED_ROOT" "$KISSED_PROF"
-    } || terminate "$?"
+    log "installing..." && {
+        log "cloning repository..." && {
+            clone_repo "$PROF_REPO" "$PROF_DIR"
+        } || terminate "$?"
 
-    log "making configuration symlink..." && {
-        make_symlink "$KISSED_CONF" "$CONF_DIR"
-    } || terminate "$?"
+        log "creating symlinks..." && {
+            make_symlink "$PROJ_BUILD" "$PROF_BUILD"
+
+	    mkdir -p "$PROF_CONF"
+            make_symlink "$PROJ_CONF" "$PROF_CONF"
+        } || terminate "$?"
+    }
+
+    [[ "$BUILD" -eq "1" ]] && {
+        log "building profile..." && {
+	    buildiso -p "$PROJ_PROF"
+        } || terminate "$?"
+    }
+
 }
 
 
 main "$@"
+
