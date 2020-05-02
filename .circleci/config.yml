@@ -2,7 +2,8 @@ version: 2.1
 
 jobs:
   build:
-    machine: demysteriismundi/manjarolinux-build:stable
+    machine: true
+      - image: demysteriismundi/manjarolinux-build:stable
     steps:
       - checkout
       - run:
