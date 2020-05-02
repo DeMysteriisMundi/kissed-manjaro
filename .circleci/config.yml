@@ -2,7 +2,7 @@ version: 2.1
 
 jobs:
   build:
-    docker:
+    machine:
       - image: demysteriismundi/manjarolinux-build:stable
     steps:
       - checkout
