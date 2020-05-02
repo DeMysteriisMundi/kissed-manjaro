@@ -2,20 +2,19 @@ version: 2.1
 
 jobs:
   build:
-    machine:
-      image: demysteriismundi/manjarolinux-build:stable
+    machine: true
     steps:
       - checkout
       - run:
-          # Get the manjaro linux profiles
-          name: Install
+          name: Building profile
           command: |
-            ./install.sh
-      - run:
-          # Build the kissed-manjaro iso file
-          name: Build
-          command: |
-            buildiso -p kissed
+            docker run \
+            --name manjarolinux-build \
+            --mount type=bind,src="$(pwd)",dst="/home/isobuilder/project" \
+            --workdir "/home/isobuilder/project" \
+            --cap-add SYS_ADMIN \
+            --entrypoint "./install.sh" \
+            demysteriismundi/manjarolinux-build:stable -b
 
 workflows:
   testing:
